@@ -12,9 +12,9 @@ template <typename M>
 constexpr bool is_matcher = false;
 
 template <typename T>
-concept MatcherExpression = requires(T a, ast_node_archetype b)
+concept MatcherExpression = requires(T a, node_archetype b)
 {
-  requires AST_Node<ast_node_archetype>;
+  requires Node<node_archetype>;
   { a.match(b, 0) } -> std::convertible_to<bool>;
 } && is_matcher<T>;
 

@@ -7,30 +7,30 @@
 namespace patterns {
 
 template <typename A, typename E = void>
-constexpr bool is_ast_node = false;
+constexpr bool is_node = false;
 
-struct ast_node_archetype
+struct node_archetype
 {
 };
 
 template <typename T>
-concept AST_Node = requires(T a)
+concept Node = requires(T a)
 {
   { next(a) };
-  { is_type(a, std::type_identity<ast_node_archetype>{}) } -> std::convertible_to<bool>;
-} && is_ast_node<T>;
+  { is_type(a, std::type_identity<node_archetype>{}) } -> std::convertible_to<bool>;
+} && is_node<T>;
 
-inline ast_node_archetype next(ast_node_archetype x) { return x; }
+inline node_archetype next(node_archetype x) { return x; }
 template <typename T>
-bool is_type(ast_node_archetype x, std::type_identity<T>) { return false; }
+bool is_type(node_archetype x, std::type_identity<T>) { return false; }
   
 template <>
-constexpr bool is_ast_node<ast_node_archetype> = true;
+constexpr bool is_node<node_archetype> = true;
 template <>
-constexpr bool is_ast_node<ast_node_archetype&> = true;
+constexpr bool is_node<node_archetype&> = true;
 
-static_assert(AST_Node<ast_node_archetype>);
-static_assert(AST_Node<ast_node_archetype&>);
+static_assert(Node<node_archetype>);
+static_assert(Node<node_archetype&>);
 
 // concept for tree
 

@@ -11,7 +11,7 @@ namespace patterns { namespace matcher {
 template <MatcherExpression... Ms>
 struct matcher_list
 {
-  template <AST_Node T, typename Context>
+  template <Node T, typename Context>
   bool match (T&& object, Context const& context) const
   {
     return false;

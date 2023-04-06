@@ -9,7 +9,7 @@ namespace patterns { namespace matcher {
 template <MatcherExpression L, MatcherExpression R>
 struct sequence
 {
-  template <AST_Node T, typename Context>
+  template <Node T, typename Context>
   bool match (T&& object, Context const& context) const
   {
     if (l.match(object, context))

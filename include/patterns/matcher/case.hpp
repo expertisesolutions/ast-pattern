@@ -10,7 +10,7 @@ namespace patterns { namespace matcher {
 template <MatcherExpression M, typename H = void_type>
 struct case_type
 {
-  template <AST_Node N, typename Context>
+  template <Node N, typename Context>
   bool match(N&& node, Context const& context) const
   {
     if (m.match(node, context))
@@ -34,7 +34,7 @@ struct case_type<M, void_type>
     return {std::move(m), std::forward<H2>(h2)};
   }
 
-  template <AST_Node N, typename Context>
+  template <Node N, typename Context>
   bool match(N&& node, Context const& context) const
   {
     return m.match(node, context);

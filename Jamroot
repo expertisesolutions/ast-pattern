@@ -1,4 +1,9 @@
 
+import testing : run ;
+
 project patterns ;
 
 exe patterns : tests/patterns.cpp : <include>include <cxxflags>-std=c++20 <cxxflags>-fconcepts-diagnostics-depth=10 ;
+
+run patterns : : : : test_patterns ;
+

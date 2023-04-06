@@ -8,7 +8,7 @@ namespace patterns { namespace matcher {
 template <typename M>
 struct children_matcher
 {
-  template <AST_Node N, typename Context>
+  template <Node N, typename Context>
   bool match(N&& n, Context const& context) const
   {
     return false;
