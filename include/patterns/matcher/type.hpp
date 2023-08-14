@@ -16,7 +16,7 @@ struct actioned_type_matcher : children_matcher_terminal {
   template <Node U, typename Context>
   bool match(U&& u, Context const& context) const
   {
-    if (is_type(u, std::type_identity<U>{}))
+    if (is_type(u, std::type_identity<T>{}))
     {
       action(u, context);
       return true;
@@ -31,7 +31,7 @@ struct type_matcher : children_matcher_terminal {
   template <Node U, typename Context>
   bool match(U&& u, Context const& context) const
   {
-    return is_type(u, std::type_identity<U>{});
+    return is_type(u, std::type_identity<T>{});
   }
 
   template <typename A>

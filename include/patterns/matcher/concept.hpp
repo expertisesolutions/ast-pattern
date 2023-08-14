@@ -2,6 +2,8 @@
 #define PATTERNS_MATCHER_CONCEPT_HPP
 
 #include <patterns/concept.hpp>
+#include <patterns/archetype/node.hpp>
+
 #include <concepts>
 
 namespace patterns {
@@ -12,9 +14,9 @@ template <typename M>
 constexpr bool is_matcher = false;
 
 template <typename T>
-concept MatcherExpression = requires(T a, node_archetype b)
+concept MatcherExpression = requires(T a, archetype::tree_node b)
 {
-  requires Node<node_archetype>;
+  requires Node<archetype::tree_node>;
   { a.match(b, 0) } -> std::convertible_to<bool>;
 } && is_matcher<T>;
 
